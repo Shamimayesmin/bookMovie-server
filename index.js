@@ -29,7 +29,7 @@ async function run() {
   try {
     const showCollection = client.db("movieTicket").collection("shows");
 
-    // get alll task
+    // get all shows
 		app.get("/shows", async (req, res) => {
 			const query = {};
 			const cursor = showCollection.find(query);
@@ -37,6 +37,7 @@ async function run() {
 			res.send(result);
 			console.log(result);
 		});
+        // get specific shows by id
         app.get("/shows/:id", async (req, res) => {
 			const id = req.params.id;
             if (!id || (typeof id !== 'string' && typeof id !== 'number')) {
